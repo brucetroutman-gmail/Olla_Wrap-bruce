@@ -1,0 +1,68 @@
+a {
+  color: #1b1b1b;
+  text-decoration: none;
+}
+
+textarea:focus {
+  outline: none; 
+  box-shadow: none !important;
+  border-color: inherit;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-container > *:nth-child(1) {
+  flex-shrink: 0; 
+}
+.app-container > *:nth-child(2) {
+  flex-grow: 1; 
+  overflow-y: auto;
+}
+
+.app-container > *:nth-child(3) {
+  flex-shrink: 0; 
+}
+
+
+
+.custom-scroll-container {
+  max-height: 73vh; 
+  overflow-y: auto; 
+  position: relative;
+}
+
+.custom-scroll-container::-webkit-scrollbar {
+  width: 0px;
+}
+
+.custom-scroll-container {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+  height: 75vh;
+}
+
+.custom-scrollbar-css {
+  overflow-y: scroll;
+}
+
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #808080;
+}
+
