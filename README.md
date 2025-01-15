@@ -14,7 +14,16 @@ https://github.com/user-attachments/assets/62c188b9-683b-4f8b-b394-bfe8a5f5d5c9
 
 ---
 
-<h3 align="center">Installation</h3>
+<h2 align="center">Installation Video</h2>
+
+### [Watch Installation Video on YouTube](https://youtu.be/zZhiHMmaPyw)
+[![Watch the video](https://img.youtube.com/vi/zZhiHMmaPyw/maxresdefault.jpg)](https://youtu.be/zZhiHMmaPyw)
+
+---
+
+<h2 align="center">Installation Instructions</h2>
+
+
 
 * clone the repo 
     ```bash
