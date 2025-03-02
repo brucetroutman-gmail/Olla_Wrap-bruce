@@ -1,4 +1,5 @@
-<h1 align="center">OllamaWrapper</h1>
+<h1 align="center">OllamaWrapper => Olla_Wrap-bruce
+</h1>
 <div align="center"><img width=300px src='ollama.png'/></div>
 <p align="center">Repository for OllamaWrapper a GUI Wrapper for Ollama</p>
 
