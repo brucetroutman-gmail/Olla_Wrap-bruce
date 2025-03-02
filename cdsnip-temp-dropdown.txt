@@ -1,0 +1,117 @@
+I'll help you modify the frontend files to add a temperature dropdown. Here are the changes needed:
+
+For `static/index.html`, add the temperature dropdown after the model dropdown:
+
+```html
+<!-- Add this after the model selection dropdown -->
+<div class="dropdown-container">
+    <label for="temperature">Temperature:</label>
+    <select id="temperature" class="dropdown">
+        <option value="0.0">0.0</option>
+        <option value="0.1">0.1</option>
+        <option value="0.2">0.2</option>
+        <option value="0.3">0.3</option>
+        <option value="0.4">0.4</option>
+        <option value="0.5">0.5</option>
+        <option value="0.6">0.6</option>
+        <option value="0.7">0.7</option>
+        <option value="0.8">0.8</option>
+        <option value="0.9">0.9</option>
+        <option value="1.0">1.0</option>
+    </select>
+</div>
+```
+
+Update the `static/style.css` to style the new dropdown:
+
+```css
+/* Add or modify these styles */
+.dropdown-container {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 14px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+```
+
+Modify the `static/script.js` to include the temperature in the message:
+
+```javascript
+// Add this at the top with your other variables
+let currentTemperature = 0.7; // Default temperature
+
+// Add this after your model dropdown event listener
+document.getElementById('temperature').addEventListener('change', function(e) {
+    currentTemperature = parseFloat(e.target.value);
+});
+
+// Modify your sendMessage function to include temperature
+async function sendMessage() {
+    const messageInput = document.getElementById('message-input');
+    const message = messageInput.value.trim();
+    
+    if (message) {
+        // Add user message to chat
+        appendMessage('User', message);
+        messageInput.value = '';
+
+        // Prepare the message with model and temperature
+        const data = {
+            message: message,
+            model: currentModel,
+            temperature: currentTemperature
+        };
+
+        // Send message through WebSocket
+        ws.send(JSON.stringify(data));
+    }
+}
+```
+
+Update your `main.py` to handle the temperature parameter:
+
+```python
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            data = await websocket.receive_json()
+            message = data['message']
+            model = data['model']
+            temperature = data.get('temperature', 0.7)  # Default to 0.7 if not provided
+            
+            # Update your Ollama API call to include temperature
+            response = requests.post('http://localhost:11434/api/generate', 
+                json={
+                    "model": model,
+                    "prompt": message,
+                    "temperature": temperature
+                })
+            
+            # Rest of your websocket handling code...
+```
+
+These changes will:
+1. Add a temperature dropdown under the model selection
+2. Style it to match your existing UI
+3. Send the selected temperature with each message
+4. Use the temperature parameter in the Ollama API call
+
+Make sure to test the changes thoroughly to ensure everything works as expected. 
+The temperature parameter will affect how creative or focused the AI's responses are, 
+with lower values (closer to 0) being more focused and deterministic, and higher values (closer to 1) 
+being more creative and varied.
