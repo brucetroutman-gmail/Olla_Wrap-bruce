@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-BASE_DIR="/home/lamao/workdir/OllamaWrapper"
+BASE_DIR="/users/shared/repos/Olla_Wrap-bruce"
 # activating env
 echo "Activating Python environment..."
 source "$BASE_DIR/env/bin/activate"
