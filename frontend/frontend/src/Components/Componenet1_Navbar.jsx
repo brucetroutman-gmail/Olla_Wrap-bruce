@@ -24,7 +24,7 @@ export default function Componenet1_Navbar({
             {/* Brand Logo */}
             <a className="navbar-brand  my-0 " href="#"> 
               <img src={ollama} width="30" height="30" className="d-inline-block align-top" alt="" />
-              <span className="ms-2 lead"><strong>OllamaWrapper
+              <span className="ms-2 lead"><strong>Ollama Model Tester
               </strong></span>
             </a>
             {isRecevingMessage && ( 
